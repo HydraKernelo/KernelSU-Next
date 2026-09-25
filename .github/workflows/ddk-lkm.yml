@@ -36,6 +36,9 @@ jobs:
       uses: actions/checkout@v7
 
     - name: Build kernelsu.ko
+      env:
+        KSU_NEXT_MANAGER_SIZE: "775"
+        KSU_NEXT_MANAGER_HASH: "5fab9586f7ec077701103949ecb4c24819e3f9e5648e9d5b54600069fa9292b7"
       run: |
         git config --global --add safe.directory /__w/KernelSU-Next/KernelSU-Next
 
@@ -116,7 +119,7 @@ jobs:
           exit 1
         fi
         if [ -n "$EXPECTED_SIZE2" ]; then
-          EXTRA_ARGS="KSU_EXPECTED_SIZE2=$EXPECTED_SIZE2 KSU_EXPECTED_HASH2=$EXPECTED_HASH2"
+          EXTRA_ARGS="KSU_NEXT_MANAGER_SIZE=$EXPECTED_SIZE2 KSU_NEXT_MANAGER_HASH=$EXPECTED_HASH2"
         fi
         
         MDIR=$(realpath .)
