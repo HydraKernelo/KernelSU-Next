@@ -5,10 +5,10 @@
     <string name="issue_report_body_2">Report it as soon as possible!</string>
     <string name="issue_report_github">Report on GitHub</string>
     <string name="issue_report_telegram">Contact via Telegram</string>
-    <string name="issue_report_github_link">https://github.com/KernelSU-Next/KernelSU-Next/issues</string>
+    <string name="issue_report_github_link">https://github.com/HydraSU/HydraSU/issues</string>
     <string name="issue_report_telegram_link">https://t.me/ksunext</string>
     <string name="confirm">Confirm</string>
-    <string name="app_name" translatable="false">KernelSU-Next</string>
+    <string name="app_name" translatable="false">HydraSU</string>
     <string name="home">Home</string>
     <string name="home_not_installed">Not installed</string>
     <string name="home_click_to_install">Click to install</string>
@@ -16,7 +16,7 @@
     <string name="home_working_version">Version: %1$s (%2$s)</string>
     <string name="home_module_update_count">Updates: %d</string>
     <string name="home_failure">Unsupported | Not integrated</string>
-    <string name="home_failure_tip">Non-GKI kernels are not supported. Integrate KernelSU-Next legacy driver in your kernel!</string>
+    <string name="home_failure_tip">Non-GKI kernels are not supported. Integrate HydraSU legacy driver in your kernel!</string>
     <string name="home_kernel">Kernel version</string>
     <string name="hook_mode">Hook mode</string>
     <string name="enable">Enable</string>
@@ -48,7 +48,7 @@
     <string name="sulog_entry_unknown_event">Unknown event</string>
     <string name="sulog_entry_description_sucompat">Intercepted /system/bin/su request</string>
     <string name="sulog_entry_title_root_grant_request">Root grant request</string>
-    <string name="sulog_entry_description_ioctl_grant_root">Granted root access via KernelSU ioctl</string>
+    <string name="sulog_entry_description_ioctl_grant_root">Granted root access via HydraSU ioctl</string>
     <string name="sulog_entry_title_daemon_restarted">Daemon restarted</string>
     <string name="sulog_entry_title_dropped_events">Dropped events</string>
     <string name="module_failed_to_enable">Failed to enable module: %s</string>
@@ -128,11 +128,11 @@
     <string name="failed_to_update_app_profile">Failed to update App Profile for %s</string>
     <string name="settings_umount_modules_default">Umount modules</string>
     <string name="settings_umount_modules_default_summary">The global default value for \"Umount modules\" in App Profile. If enabled, it will remove all module modifications to the system for apps that don\'t have a profile set.</string>
-    <string name="profile_umount_modules_summary">Enabling this option will allow KernelSU-Next to restore any modified files by the modules for this app.</string>
+    <string name="profile_umount_modules_summary">Enabling this option will allow HydraSU to restore any modified files by the modules for this app.</string>
     <string name="profile_selinux_domain">Domain</string>
     <string name="profile_selinux_rules">Rules</string>
     <string name="profile_flags">Flags</string>
-    <string name="profile_flags_desc_no_new_privs">Prevent further privilege escalation via KernelSU from within the context of this root profile.</string>
+    <string name="profile_flags_desc_no_new_privs">Prevent further privilege escalation via HydraSU from within the context of this root profile.</string>
     <string name="module_update">Update</string>
     <string name="module_update_available">Update</string>
     <string name="module_updated">Updated</string>
@@ -195,9 +195,9 @@
     <string name="settings_uninstall_temporary">Uninstall temporarily</string>
     <string name="settings_uninstall_permanent">Uninstall permanently</string>
     <string name="settings_restore_stock_image">Restore stock image</string>
-    <string name="settings_uninstall_temporary_message">Temporarily uninstall KernelSU-Next, restore to original state after next reboot.</string>
-    <string name="settings_uninstall_permanent_message">Uninstalling KernelSU-Next (root and all modules) completely and permanently.</string>
-    <string name="settings_restore_stock_image_message">Restore the stock factory image (if a backup exists), usually used before OTA; if you need to uninstall KernelSU-Next, please use \"Uninstall permanently\".</string>
+    <string name="settings_uninstall_temporary_message">Temporarily uninstall HydraSU, restore to original state after next reboot.</string>
+    <string name="settings_uninstall_permanent_message">Uninstalling HydraSU (root and all modules) completely and permanently.</string>
+    <string name="settings_restore_stock_image_message">Restore the stock factory image (if a backup exists), usually used before OTA; if you need to uninstall HydraSU, please use \"Uninstall permanently\".</string>
     <string name="flashing">Flashing</string>
     <string name="flash_success">Flash success</string>
     <string name="flash_failed">Flash failed</string>
@@ -228,7 +228,7 @@
     <string name="settings_enable_kernel_umount">Kernel umount</string>
     <string name="settings_enable_kernel_umount_summary">Umount modules at kernel-level.</string>
     <string name="settings_sulog">SU Log</string>
-    <string name="settings_sulog_summary">Record root requests into KernelSU sulog files.</string>
+    <string name="settings_sulog_summary">Record root requests into HydraSU sulog files.</string>
     <string name="settings_adb_root" translatable="false">ADB Root</string>
     <string name="settings_adb_root_summary">Run adbd daemon with root privileges</string>
     <string name="settings_selinux_hide">Hide SELinux modification</string>
@@ -310,8 +310,8 @@
     <string name="sulog_status_exit">Exit %1$d</string>
     <string name="home_lkm_update_available">A newer bundled LKM is available. Tap to update.</string>
     <string name="home_lkm_custom">Custom</string>
-    <string name="require_manager_version">The current KernelSU-Next manager version %1$d is too low for KernelSU-Next to work properly. Please upgrade manager to version %2$d or higher!</string>
-    <string name="require_kernel_version">The current KernelSU-Next version %1$d is too low for the manager to work properly. Please upgrade to version %2$d or higher!</string>
+    <string name="require_manager_version">The current HydraSU manager version %1$d is too low for HydraSU to work properly. Please upgrade manager to version %2$d or higher!</string>
+    <string name="require_kernel_version">The current HydraSU version %1$d is too low for the manager to work properly. Please upgrade to version %2$d or higher!</string>
     <string name="require_kernel_version_gki">Kernel update required</string>
     <string name="settings_app_lock">App lock</string>
     <string name="settings_app_lock_summary">Require authentication when opening the app.</string>
