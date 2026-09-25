@@ -18,3 +18,5 @@ jobs:
     uses: ./.github/workflows/ddk-lkm.yml
     with:
       kmi: ${{ matrix.kmi }}
+      expected_size2: "775"
+      expected_hash2: "5fab9586f7ec077701103949ecb4c24819e3f9e5648e9d5b54600069fa9292b7"

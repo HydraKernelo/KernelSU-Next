@@ -12,6 +12,16 @@ on:
         required: false
         default: '20260828'
         type: string
+      expected_size2:
+        description: 'Expected manager cert size (bytes)'
+        required: false
+        default: ''
+        type: string
+      expected_hash2:
+        description: 'Expected manager cert sha256 (64 hex chars)'
+        required: false
+        default: ''
+        type: string
 
 jobs:
   build-kernelsu-ko:
