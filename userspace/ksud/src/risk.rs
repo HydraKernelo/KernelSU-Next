@@ -6,11 +6,15 @@ use serde::Deserialize;
 use std::path::Path;
 use std::process::Command;
 use unicode_normalization::UnicodeNormalization;
+use anyhow::Result;
 
 const DEFAULT_RISK_JSON: &str = include_str!("../../../risk/risk.json");
 const REMOTE_RISK_URL: &str =
     "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/risk/risk/risk.json";
 const RISK_CACHE_PATH: &str = concatcp!(defs::CACHE_DIR, "risk.json");
+
+const RISK_CONFIG_MODULE_ID: &str = "internal.risk";
+const RISK_CONFIG_KEY: &str = "enabled";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Deserialize)]
 #[serde(rename_all = "lowercase")]
@@ -177,6 +181,44 @@ fn normalize_risk_text(text: &str) -> String {
             }
         })
         .collect::<String>()
+}
+
+pub fn is_risk_detection_enabled() -> bool {
+    match crate::module_config::get_config_value(
+        RISK_CONFIG_MODULE_ID,
+        RISK_CONFIG_KEY,
+        crate::module_config::ConfigType::Persist,
+    ) {
+        Ok(Some(value)) => crate::module_config::parse_bool_config(&value),
+        Ok(None) | Err(_) => true,
+    }
+}
+
+pub fn set_risk_detection_enabled(enabled: bool) -> Result<()> {
+    crate::module_config::set_config_value(
+        RISK_CONFIG_MODULE_ID,
+        RISK_CONFIG_KEY,
+        &enabled.to_string(),
+        crate::module_config::ConfigType::Persist,
+    )?;
+
+    if enabled {
+        println!("Enabled");
+    } else {
+        println!("Disabled");
+    }
+
+    Ok(())
+}
+
+pub fn risk_detection_status() -> Result<()> {
+    if is_risk_detection_enabled() {
+        println!("Enabled");
+    } else {
+        println!("Disabled");
+    }
+
+    Ok(())
 }
 
 #[cfg(test)]
