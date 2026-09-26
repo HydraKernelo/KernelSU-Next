@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.system.OsConstants
 import androidx.compose.material.icons.filled.RadioButtonChecked
+import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.RadioButtonUnchecked
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -233,6 +234,38 @@ private fun KernelFeaturesCard(
             modifier = Modifier.padding(12.dp),
             verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
+            val parasiteCtx = androidx.compose.ui.platform.LocalContext.current
+            var parasiteEnabled by rememberSaveable {
+                mutableStateOf(
+                    parasiteCtx.getSharedPreferences("parasite", Context.MODE_PRIVATE)
+                        .getBoolean("enabled", true)
+                )
+            }
+            SwitchItem(
+                icon = Icons.Filled.Language,
+                title = "寄生工作台 (PWA 控制台)",
+                summary = "浏览器访问 http://127.0.0.1:38214 · 关闭将停止本地服务",
+                checked = parasiteEnabled,
+                modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(8.dp)),
+                colors = ListItemDefaults.colors(containerColor = Color.Transparent)
+            ) {
+                parasiteCtx.getSharedPreferences("parasite", Context.MODE_PRIVATE)
+                    .edit().putBoolean("enabled", it).apply()
+                parasiteEnabled = it
+                if (it) {
+                    val si = Intent(parasiteCtx, com.rifsxd.ksunext.ParasiteService::class.java)
+                    if (android.os.Build.VERSION.SDK_INT >= 26) {
+                        parasiteCtx.startForegroundService(si)
+                    } else {
+                        parasiteCtx.startService(si)
+                    }
+                    Toast.makeText(parasiteCtx, "寄生工作台已启动", Toast.LENGTH_SHORT).show()
+                } else {
+                    parasiteCtx.stopService(Intent(parasiteCtx, com.rifsxd.ksunext.ParasiteService::class.java))
+                    Toast.makeText(parasiteCtx, "寄生工作台已停止", Toast.LENGTH_SHORT).show()
+                }
+            }
+
             var umountChecked by rememberSaveable {
                 mutableStateOf(Natives.isDefaultUmountModules())
             }
