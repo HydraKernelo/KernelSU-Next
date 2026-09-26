@@ -25,7 +25,9 @@ apksign {
 android {
     namespace = "com.rifsxd.ksunext"
 
-    applicationId = "io.hydra.kernel"
+    defaultConfig {
+        applicationId = "io.hydra.kernel"
+    }
 
     buildTypes {
         release {
