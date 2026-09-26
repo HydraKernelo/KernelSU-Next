@@ -26,13 +26,49 @@
             android:theme="@style/Theme.KernelSU"
             android:launchMode="singleTask"
             android:taskAffinity="">
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+
+        <!-- 桌面入口 A：正常模式（HydraSU 蛇形图标） -->
+        <activity-alias
+            android:name=".ui.LauncherDefault"
+            android:targetActivity=".ui.MainActivity"
+            android:label="@string/app_name"
+            android:icon="@mipmap/ic_launcher"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
-        </activity>
+        </activity-alias>
+
+        <!-- 桌面入口 B：隐匿伪装（系统更新 · 齿轮图标） -->
+        <activity-alias
+            android:name=".ui.LauncherStealth"
+            android:targetActivity=".ui.MainActivity"
+            android:label="系统更新"
+            android:icon="@mipmap/ic_gear"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- 拨号盘暗码 *#*#38214#*#* 唤起 -->
+        <activity-alias
+            android:name=".SecretCodeEntry"
+            android:targetActivity=".ui.MainActivity"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SECRET_CODE" />
+                <data android:scheme="android_secret_code" android:host="38214" />
+            </intent-filter>
+        </activity-alias>
         
         <!-- Single entry point for opening zip files: the zip kind (module or
              AnyKernel3) is auto-detected in MainActivity -->

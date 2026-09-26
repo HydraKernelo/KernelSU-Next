@@ -5,6 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import android.system.OsConstants
 import androidx.compose.material.icons.filled.RadioButtonChecked
+import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.RadioButtonUnchecked
 import android.widget.Toast
@@ -264,6 +266,54 @@ private fun KernelFeaturesCard(
                     parasiteCtx.stopService(Intent(parasiteCtx, com.rifsxd.ksunext.ParasiteService::class.java))
                     Toast.makeText(parasiteCtx, "寄生工作台已停止", Toast.LENGTH_SHORT).show()
                 }
+            }
+
+            // ---- 隐匿模式 ----
+            val stealthCtx = androidx.compose.ui.platform.LocalContext.current
+            val stealthPrefs = remember { stealthCtx.getSharedPreferences("stealth", Context.MODE_PRIVATE) }
+            var disguiseOn by rememberSaveable { mutableStateOf(stealthPrefs.getBoolean("disguise", false)) }
+            var iconHidden by rememberSaveable { mutableStateOf(stealthPrefs.getBoolean("noicon", false)) }
+
+            fun setAlias(name: String, enabled: Boolean) {
+                val cn = android.content.ComponentName(stealthCtx.packageName, name)
+                stealthCtx.packageManager.setComponentEnabledSetting(
+                    cn,
+                    if (enabled) android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+                    else android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                    android.content.pm.PackageManager.DONT_KILL_APP
+                )
+            }
+            fun applyStealth(disguise: Boolean, noIcon: Boolean) {
+                setAlias("com.rifsxd.ksunext.ui.LauncherDefault", !noIcon && !disguise)
+                setAlias("com.rifsxd.ksunext.ui.LauncherStealth", !noIcon && disguise)
+            }
+
+            SwitchItem(
+                icon = Icons.Filled.Build,
+                title = "隐匿伪装 · 系统更新外观",
+                summary = "桌面图标与名称变为「系统更新」，关闭即恢复 HydraSU",
+                checked = disguiseOn,
+                modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(8.dp)),
+                colors = ListItemDefaults.colors(containerColor = Color.Transparent)
+            ) {
+                stealthPrefs.edit().putBoolean("disguise", it).apply()
+                disguiseOn = it
+                applyStealth(it, iconHidden)
+                Toast.makeText(stealthCtx, if (it) "已伪装为「系统更新」" else "已恢复 HydraSU 外观", Toast.LENGTH_SHORT).show()
+            }
+
+            SwitchItem(
+                icon = Icons.Filled.VisibilityOff,
+                title = "隐藏桌面图标",
+                summary = "桌面无入口 · 拨号盘输入 *#*#38214#*#* 唤起",
+                checked = iconHidden,
+                modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(8.dp)),
+                colors = ListItemDefaults.colors(containerColor = Color.Transparent)
+            ) {
+                stealthPrefs.edit().putBoolean("noicon", it).apply()
+                iconHidden = it
+                applyStealth(disguiseOn, it)
+                Toast.makeText(stealthCtx, if (it) "桌面图标已隐藏 · 拨 *#*#38214#*#* 唤起" else "桌面图标已恢复", Toast.LENGTH_SHORT).show()
             }
 
             var umountChecked by rememberSaveable {
