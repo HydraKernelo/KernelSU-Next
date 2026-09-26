@@ -40,7 +40,13 @@ class ParasiteService : Service() {
         Thread { serve() }.start()
     }
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int = START_STICKY
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        if (!getSharedPreferences("parasite", MODE_PRIVATE).getBoolean("enabled", true)) {
+            stopSelf()
+            return START_NOT_STICKY
+        }
+        return START_STICKY
+    }
     override fun onBind(intent: Intent?): IBinder? = null
 
     private fun loadOrCreateToken(): String {
