@@ -111,26 +111,26 @@ class ParasiteService : Service() {
                 body = String(buf, 0, read)
             }
 
-            val resp: Pair<Int, String> = when {
+            val resp: Triple<Int, String, ByteArray> = when {
                 path == "/" || path == "/index.html" ->
-                    200 to html(INDEX_B64, "text/html; charset=utf-8")
+                    html(INDEX_B64, "text/html; charset=utf-8")
                 path == "/manifest.json" ->
-                    200 to html(MANIFEST_B64, "application/manifest+json")
+                    html(MANIFEST_B64, "application/manifest+json")
                 path == "/sw.js" ->
-                    200 to html(SW_B64, "application/javascript")
+                    html(SW_B64, "application/javascript")
                 path == "/icon.png" ->
-                    200 to bin(ICON_B64, "image/png")
+                    bin(ICON_B64, "image/png")
                 path.startsWith("/api/") -> {
                     if (reqToken != token) {
-                        401 to json("""{"error":"unauthorized"}""")
+                        json("""{"error":"unauthorized"}""")
                     } else when (path) {
                         "/api/status" -> apiStatus()
                         "/api/modules" -> apiModules()
                         "/api/exec" -> apiExec(body)
-                        else -> 404 to json("""{"error":"not found"}""")
+                        else -> json("""{"error":"not found"}""")
                     }
                 }
-                else -> 404 to json("""{"error":"not found"}""")
+                else -> json("""{"error":"not found"}""")
             }
 
             val (code, contentType, payload) = resp
