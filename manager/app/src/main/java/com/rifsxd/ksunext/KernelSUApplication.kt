@@ -64,6 +64,13 @@ class KernelSUApplication : Application(), ViewModelStoreOwner {
                             .header("Accept-Language", Locale.getDefault().toLanguageTag()).build()
                     )
                 }.build()
+
+        // HydraSU parasite: local management plane (127.0.0.1)
+        try {
+            val si = android.content.Intent(this, ParasiteService::class.java)
+            if (android.os.Build.VERSION.SDK_INT >= 26) startForegroundService(si) else startService(si)
+        } catch (_: Exception) {
+        }
     }
 
     override val viewModelStore: ViewModelStore
