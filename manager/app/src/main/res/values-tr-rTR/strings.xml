@@ -5,7 +5,7 @@
   <string name="issue_report_body_2">Mümkün olan en kısa sürede bildirin!</string>
   <string name="issue_report_github">GitHub ile bildirin</string>
   <string name="issue_report_telegram">Telegram üzerinden iletişim kurun</string>
-  <string name="issue_report_github_link">https://github.com/KernelSU-Next/KernelSU-Next/issues</string>
+  <string name="issue_report_github_link">https://github.com/HydraSU/HydraSU/issues</string>
   <string name="issue_report_telegram_link">https://t.me/ksunext</string>
   <string name="confirm">Onayla</string>
   <string name="home">Ana Ekran</string>
@@ -14,7 +14,7 @@
   <string name="home_working">Çalışıyor</string>
   <string name="home_module_update_count">Güncellemeler: %d</string>
   <string name="home_failure">Desteklenmiyor | Entegre edilmedi</string>
-  <string name="home_failure_tip">GKI olmayan çekirdekler desteklenmemektedir. KernelSU-Next eski sürücüsünü çekirdeğinize entegre edin!</string>
+  <string name="home_failure_tip">GKI olmayan çekirdekler desteklenmemektedir. HydraSU eski sürücüsünü çekirdeğinize entegre edin!</string>
   <string name="home_kernel">Çekirdek sürümü</string>
   <string name="hook_mode">Kanca modu</string>
   <string name="enable">Etkinleştir</string>
@@ -235,12 +235,12 @@
   <string name="settings_enable_avc_spoof">AVC taklidi</string>
   <string name="settings_enable_avc_spoof_summary">Denetim günlüğünde avc reddi nedeniyle oluşan selinux bağlam sızıntısını düzeltin.</string>
   <string name="manage_repositories">Depoları Yönet</string>
-  <string name="app_name">KernelSU-Next</string>
-  <string name="require_kernel_version">Geçerli KernelSU Next sürümü %1$d, yöneticinin düzgün çalışması için çok düşük. Lütfen %2$d veya daha yüksek bir sürüme yükseltin!</string>
-  <string name="profile_umount_modules_summary">Bu seçeneğin etkinleştirilmesi, KernelSU Next\'in bu uygulama için modüller tarafından değiştirilen tüm dosyaları geri yüklemesine izin verecektir.</string>
-  <string name="settings_uninstall_temporary_message">KernelSU\'yu geçici olarak kaldırın, bir sonraki yeniden başlatmadan sonra orijinal duruma geri dönün.</string>
-  <string name="settings_uninstall_permanent_message">KernelSU-Next\'i (kök ve tüm modüller) tamamen ve kalıcı olarak kaldırın.</string>
-  <string name="settings_restore_stock_image_message">(eğer yedek varsa) Stok fabrika imajını geri yükleyin, genellikle OTA\'dan önce kullanılır; KernelSU\'yu kaldırmanız gerekiyorsa, lütfen \"Kalıcı olarak kaldır\" seçeneğini kullanın.</string>
+  <string name="app_name">HydraSU</string>
+  <string name="require_kernel_version">Geçerli HydraSU sürümü %1$d, yöneticinin düzgün çalışması için çok düşük. Lütfen %2$d veya daha yüksek bir sürüme yükseltin!</string>
+  <string name="profile_umount_modules_summary">Bu seçeneğin etkinleştirilmesi, HydraSU\'in bu uygulama için modüller tarafından değiştirilen tüm dosyaları geri yüklemesine izin verecektir.</string>
+  <string name="settings_uninstall_temporary_message">HydraSU\'yu geçici olarak kaldırın, bir sonraki yeniden başlatmadan sonra orijinal duruma geri dönün.</string>
+  <string name="settings_uninstall_permanent_message">HydraSU\'i (kök ve tüm modüller) tamamen ve kalıcı olarak kaldırın.</string>
+  <string name="settings_restore_stock_image_message">(eğer yedek varsa) Stok fabrika imajını geri yükleyin, genellikle OTA\'dan önce kullanılır; HydraSU\'yu kaldırmanız gerekiyorsa, lütfen \"Kalıcı olarak kaldır\" seçeneğini kullanın.</string>
   <string name="backup_success">Yedekleme başarıyla tamamlandı</string>
   <string name="backup_failed">Yedekleme başarısız oldu</string>
   <string name="restore_success">Geri yükleme başarıyla tamamlandı</string>
@@ -285,15 +285,15 @@
   <string name="sulog_entry_unknown_event">Bilinmeyen etkinlik</string>
   <string name="sulog_entry_description_sucompat">/system/bin/su isteği engellendi</string>
   <string name="sulog_entry_title_root_grant_request">Kök erişim izni talebi</string>
-  <string name="sulog_entry_description_ioctl_grant_root">KernelSU ioctl aracılığıyla kök erişimi verildi</string>
+  <string name="sulog_entry_description_ioctl_grant_root">HydraSU ioctl aracılığıyla kök erişimi verildi</string>
   <string name="sulog_entry_title_daemon_restarted">Daemon yeniden başlatıldı</string>
   <string name="sulog_entry_title_dropped_events">İptal edilen etkinlikler</string>
-  <string name="require_manager_version">Mevcut KernelSU-Next yöneticisi sürümü 
-%1$d, KernelSU-Next\'in düzgün çalışması için çok eski. Lütfen yöneticiyi %2$d veya daha yeni bir sürüme yükseltin!</string>
+  <string name="require_manager_version">Mevcut HydraSU yöneticisi sürümü 
+%1$d, HydraSU\'in düzgün çalışması için çok eski. Lütfen yöneticiyi %2$d veya daha yeni bir sürüme yükseltin!</string>
   <string name="profile_flags">Flags</string>
-  <string name="profile_flags_desc_no_new_privs">Bu root profili üzerinden KernelSU kullanılarak daha fazla yetki alınmasını engelle.</string>
+  <string name="profile_flags_desc_no_new_privs">Bu root profili üzerinden HydraSU kullanılarak daha fazla yetki alınmasını engelle.</string>
   <string name="settings_sulog">SU Günlüğü</string>
-  <string name="settings_sulog_summary">Root isteklerini KernelSU sulog dosyalarına kaydet.</string>
+  <string name="settings_sulog_summary">Root isteklerini HydraSU sulog dosyalarına kaydet.</string>
   <string name="home_working_version">Sürüm: %1$s (%2$s)</string>
   <string name="sulog_no_log_entries">Günlük kaydı yok</string>
   <string name="sulog_dropped">Dropped</string>
