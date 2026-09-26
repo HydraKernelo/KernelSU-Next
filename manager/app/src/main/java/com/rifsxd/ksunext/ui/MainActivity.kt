@@ -300,7 +300,7 @@ class MainActivity : FragmentActivity() {
                                 Icon(
                                     painter = painterResource(R.drawable.ic_ksu_next),
                                     contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary,
+                                    tint = androidx.compose.ui.graphics.Color.Unspecified,
                                     modifier = Modifier
                                         .size(120.dp)
                                         .graphicsLayer { rotationZ = splashRotation }
