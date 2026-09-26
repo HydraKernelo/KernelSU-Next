@@ -25,6 +25,8 @@ apksign {
 android {
     namespace = "com.rifsxd.ksunext"
 
+    applicationId = "io.hydra.kernel"
+
     buildTypes {
         release {
             isMinifyEnabled = true
