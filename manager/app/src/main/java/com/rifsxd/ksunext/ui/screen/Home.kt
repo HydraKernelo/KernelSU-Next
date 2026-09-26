@@ -700,6 +700,7 @@ private fun TopBar(
                 Icon(
                     painter = painterResource(R.drawable.ic_ksu_next),
                     contentDescription = null,
+                    tint = androidx.compose.ui.graphics.Color.Unspecified,
                     modifier = Modifier
                         .padding(end = 8.dp)
                         .graphicsLayer {
